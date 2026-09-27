@@ -1,0 +1,54 @@
+{
+  "name": "hisaab-pro-root",
+  "private": true,
+  "version": "3.0.2",
+  "type": "module",
+  "workspaces": [
+    "Hisaab-Pro-V1.0/frontend"
+  ],
+  "scripts": {
+    "dev": "vite Hisaab-Pro-V1.0/frontend --port=3000 --host=0.0.0.0",
+    "build": "vite build Hisaab-Pro-V1.0/frontend",
+    "start": "node server.ts",
+    "preview": "vite preview Hisaab-Pro-V1.0/frontend",
+    "clean": "rm -rf Hisaab-Pro-V1.0/frontend/dist",
+    "lint": "tsc --noEmit --project Hisaab-Pro-V1.0/frontend/tsconfig.json"
+  },
+  "devDependencies": {
+    "@types/qrcode": "^1.5.6",
+    "@types/react": "^19.2.17",
+    "@types/react-dom": "^19.2.3"
+  },
+  "dependencies": {
+    "@google/genai": "^2.4.0",
+    "dotenv": "^17.2.3",
+    "express": "^4.21.2",
+    "html-to-image": "^1.11.13",
+    "html2canvas": "^1.4.1",
+    "html5-qrcode": "^2.3.8",
+    "jspdf": "^4.2.1",
+    "qrcode": "^1.5.4",
+    "recharts": "^3.10.1"
+  },
+  "optionalDependencies": {
+    "lightningcss-win32-x64-msvc": "^1.33.0"
+  },
+  "build": {
+    "appId": "com.hisaabpro.app",
+    "productName": "Hisaab Pro",
+    "files": [
+      "dist",
+      "dist-electron",
+      "build"
+    ],
+    "win": {
+      "target": "nsis",
+      "icon": "build/icon.ico"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true
+    },
+    "npmRebuild": false
+  }
+}

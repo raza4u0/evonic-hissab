@@ -1,0 +1,7 @@
+{
+  "name": "Hisaab Pro",
+  "version": "2.1.0",
+  "description": "A comprehensive UAE VAT 5% and Corporate Tax 9% compliant accounting and ERP software featuring Computer & Printer Sales/Service with Job Cards, Auto Spare Parts, Retail Size/Color Matrix, Fleet Logistics, and Bilingual Invoicing.",
+  "requestFramePermissions": ["camera"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

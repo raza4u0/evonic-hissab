@@ -1,0 +1,301 @@
+3450:                   <div className="space-y-2 text-right max-w-lg">
+3451:                     {company.logoUrl ? (
+3452:                       <div className={`${logoSizeClass} flex items-center justify-end overflow-hidden mb-2 ml-auto`}>
+3453:                         <img src={company.logoUrl} alt="logo" className="object-contain max-h-full max-w-full" crossOrigin="anonymous" />
+3454:                       </div>
+3455:                     ) : (
+3456:                       <div className="bg-white p-3 rounded-lg font-bold text-[#0F172A] inline-block text-sm border border-[#E2E8F0] font-mono">
+3457:                         {company.name.substring(0, 3).toUpperCase()}
+3458:                       </div>
+3459:                     )}
+3460:                     <div>
+3461:                       <h3 className="font-sans font-black text-[#0F172A] text-base italic">{company.name}</h3>
+3462:                       <p className="text-slate-500 text-[9px] uppercase font-mono tracking-wider font-bold">{vendorRegisterLabel}</p>
+3463:                       <p className="text-slate-600 text-[10px] font-mono">
+3464:                         Phone: {company.phone || 'N/A'} | Email: {company.email || 'N/A'}
+3465:                       </p>
+3466:                       
+3467:                       {/* TRN placed below company details (name, phone, email) */}
+3468:                       {company.trn && (
+3469:                         <div className="bg-slate-100 p-2 rounded-lg border border-slate-250 inline-block text-right mt-2">
+3470:                           <p className="font-extrabold text-slate-900 text-xs">
+3471:                             {trnFullLabel}: <span className="text-indigo-600 font-mono tracking-widest font-black">{company.trn}</span>
+3472:                           </p>
+3473:                           <p className="text-[10px] text-slate-650 font-bold font-mono">{trnVatNoLabel}: {company.trn}</p>
+3474:                         </div>
+3475:                       )}
+3476:                     </div>
+3477:                   </div>
+3478: 
+3479:                   <div className="text-left space-y-1">
+3480:                     <h1 className="text-2xl font-sans font-black uppercase tracking-tight text-slate-900">
+3481:                       {printDoc.type === 'Invoice' ? (company.vatEnabled !== false ? 'Tax Invoice' : 'Invoice') : printDoc.type === 'Quotation' ? 'Quotation' : 'Delivery Note'}
+3482:                     </h1>
+3483: 
+3484:                     <div className="pt-2 font-mono space-y-0.5 text-slate-600 text-xs text-left">
+3485:                       <p>Date: {printDoc.date}</p>
+3486:                       <p>Invoice Number: <strong className="text-slate-900">{printDoc.docNumber}</strong></p>
+3487:                       <p>Due Date: {printDoc.dueDate || ''}</p>
+3488:                       <p>LP Number: <strong className="text-slate-900 font-bold">{printDoc.lpoNumber || ''}</strong></p>
+3489:                       <p>Quotation Number: <strong className="text-slate-900 font-bold">{printDoc.reference || ''}</strong></p>
+3490:                       <p>Purchase Number: <strong className="text-slate-900 font-bold">{printDoc.orderId || ''}</strong></p>
+3491:                       {(printDoc.paymentTerms || printDoc.paymentMethod) && (
+3492:                         <p>Terms & Method: <strong className="text-slate-900">
+3493:                           {printDoc.paymentTerms && printDoc.paymentMethod && printDoc.paymentTerms !== printDoc.paymentMethod
+3494:                             ? `${printDoc.paymentTerms} (${printDoc.paymentMethod})`
+3495:                             : (printDoc.paymentTerms || printDoc.paymentMethod)}
+3496:                         </strong></p>
+3497:                       )}
+3498:                     </div>
+3499:                   </div>
+3500:                 </div>
+3501:               );
+3502:             } else {
+3503:               // center layout
+3504:               return (
+3505:                 <div className="flex flex-col items-center justify-center text-center space-y-4">
+3506:                   <div className="space-y-2 flex flex-col items-center justify-center">
+3507:                     {company.logoUrl ? (
+3508:                       <div className={`${logoSizeClass} flex items-center justify-center overflow-hidden mb-2`}>
+3509:                         <img src={company.logoUrl} alt="logo" className="object-contain max-h-full max-w-full" crossOrigin="anonymous" />
+3510:                       </div>
+3511:                     ) : (
+3512:                       <div className="bg-white p-3 rounded-lg font-bold text-[#0F172A] inline-block text-sm border border-[#E2E8F0] font-mono">
+3513:                         {company.name.substring(0, 3).toUpperCase()}
+3514:                       </div>
+3515:                     )}
+3516:                     <div>
+3517:                       <h3 className="font-sans font-black text-[#0F172A] text-base italic">{company.name}</h3>
+3518:                       <p className="text-slate-500 text-[9px] uppercase font-mono tracking-wider font-bold">{vendorRegisterLabel}</p>
+3519:                       <p className="text-slate-600 text-[10px] font-mono">
+3520:                         Phone: {company.phone || 'N/A'} | Email: {company.email || 'N/A'}
+3521:                       </p>
+3522:                       
+3523:                       {/* TRN placed below company details (name, phone, email) */}
+3524:                       {company.trn && (
+3525:                         <div className="bg-slate-100 p-2 rounded-lg border border-slate-250 inline-block text-center mt-2">
+3526:                           <p className="font-extrabold text-slate-900 text-xs">
+3527:                             {trnFullLabel}: <span className="text-indigo-600 font-mono tracking-widest font-black">{company.trn}</span>
+3528:                           </p>
+3529:                           <p className="text-[10px] text-slate-500 font-bold font-mono">{trnVatNoLabel}: {company.trn}</p>
+3530:                         </div>
+3531:                       )}
+3532:                     </div>
+3533:                   </div>
+3534: 
+3535:                   <div className="space-y-1 w-full flex flex-col items-center">
+3536:                     <h1 className="text-2xl font-sans font-black uppercase tracking-tight text-slate-900">
+3537:                       {printDoc.type === 'Invoice' ? (company.vatEnabled !== false ? 'Tax Invoice' : 'Invoice') : printDoc.type === 'Quotation' ? 'Quotation' : 'Delivery Note'}
+3538:                     </h1>
+3539: 
+3540:                     <div className="pt-2 font-mono space-y-0.5 text-slate-600 flex flex-wrap justify-center gap-x-4 gap-y-1 text-xs">
+3541:                       <p>Date: {printDoc.date}</p>
+3542:                       <p>Invoice Number: <strong className="text-slate-900">{printDoc.docNumber}</strong></p>
+3543:                       <p>Due Date: {printDoc.dueDate || ''}</p>
+3544:                       <p>LP Number: <strong className="text-slate-900 font-bold">{printDoc.lpoNumber || ''}</strong></p>
+3545:                       <p>Quotation Number: <strong className="text-slate-900 font-bold">{printDoc.reference || ''}</strong></p>
+3546:                       <p>Purchase Number: <strong className="text-slate-900 font-bold">{printDoc.orderId || ''}</strong></p>
+3547:                       {(printDoc.paymentTerms || printDoc.paymentMethod) && (
+3548:                         <p>Terms & Method: <strong className="text-slate-900">
+3549:                           {printDoc.paymentTerms && printDoc.paymentMethod && printDoc.paymentTerms !== printDoc.paymentMethod
+3550:                             ? `${printDoc.paymentTerms} (${printDoc.paymentMethod})`
+3551:                             : (printDoc.paymentTerms || printDoc.paymentMethod)}
+3552:                         </strong></p>
+3553:                       )}
+3554:                     </div>
+3555:                   </div>
+3556:                 </div>
+3557:               );
+3558:             }
+3559:           })()}
+3560: 
+3561:           {/* Divider */}
+3562:           <div className="border-t-2 border-[#0F172A] my-4"></div>
+3563: 
+3564:           {/* Bill To & Ship To info */}
+3565:           <div className="bg-white p-5 rounded-lg border border-[#E2E8F0]">
+3566:             <div>
+3567:               <h3 className="font-bold text-slate-400 uppercase tracking-widest text-[8px] mb-1">Customer / Bill To:</h3>
+3568:               <p className="font-sans font-black text-[#0F172A] text-sm italic">{cust?.name || 'Cash Customer'}</p>
+3569:               {printDoc.type === 'Invoice' && cust?.trn && (
+3570:                 <p className="font-bold text-slate-700 mt-1 text-xs">
+3571:                   Customer TRN: <span className="font-mono text-[#0F172A] tracking-wider">{cust.trn}</span>
+3572:                 </p>
+3573:               )}
+3574:               {printDoc.type === 'Invoice' && cust?.vatStatus === 'pending' && (
+3575:                 <p className="font-bold text-rose-700 mt-1 text-xs">
+3576:                   Provisional TRN (Pending): <span className="font-mono text-rose-800 tracking-wider bg-rose-50 px-1.5 py-0.5 rounded border border-rose-200">{cust.tempTrnId || 'TEMP'}</span>
+3577:                 </p>
+3578:               )}
+3579:               <div className="text-slate-500 space-y-0.5 mt-2">
+3580:                 <p>Phone: {cust?.phone || 'N/A'}</p>
+3581:                 <p>Email: {cust?.email || 'N/A'}</p>
+3582:                 <p className="max-w-xs">Address: {cust?.address || 'N/A'}, {cust?.emirate}</p>
+3583:               </div>
+3584:             </div>
+3585:           </div>
+3586: 
+3587:           {/* Itemized Table */}
+3588:           <table className="w-full text-left border-collapse mt-4">
+3589:             <thead>
+3590:               {printDoc.type === 'DeliveryNote' ? (
+3591:                 <tr className="bg-slate-800 text-white font-mono text-[9px] uppercase tracking-wider">
+3592:                   <th className="py-2.5 px-3 font-semibold rounded-l">#</th>
+3593:                   <th className="py-2.5 px-3 font-semibold">SKU / Code</th>
+3594:                   <th className="py-2.5 px-3 font-semibold">Item Description</th>
+3595:                   <th className="py-2.5 px-3 font-semibold text-right rounded-r">Quantity (Qty)</th>
+3596:                 </tr>
+3597:               ) : (
+3598:                 <tr className="bg-slate-800 text-white font-mono text-[9px] uppercase tracking-wider">
+3599:                   <th className="py-2.5 px-3 font-semibold rounded-l">#</th>
+3600:                   <th className="py-2.5 px-3 font-semibold">SKU / Code</th>
+3601:                   <th className="py-2.5 px-3 font-semibold">Item Description</th>
+3602:                   <th className="py-2.5 px-3 font-semibold text-right">Qty</th>
+3603:                   <th className="py-2.5 px-3 font-semibold text-right">Unit Rate</th>
+3604:                   <th className="py-2.5 px-3 font-semibold text-right">VAT (5%)</th>
+3605:                   <th className="py-2.5 px-3 font-semibold text-right rounded-r">Line Total</th>
+3606:                 </tr>
+3607:               )}
+3608:             </thead>
+3609:             <tbody className="divide-y divide-slate-150">
+3610:               {printDoc.items.map((item, idx) => (
+3611:                 <tr key={idx} className="hover:bg-slate-50/30">
+3612:                   <td className="py-3 px-3 font-mono text-slate-450">{idx + 1}</td>
+3613:                   <td className="py-3 px-3 font-mono font-medium">{item.sku || 'N/A'}</td>
+3614:                   <td className="py-3 px-3">
+3615:                     <div className="font-semibold text-slate-800">{item.name}</div>
+3616:                   </td>
+3617:                   <td className="py-3 px-3 font-mono text-right font-bold text-slate-900">{item.qty}</td>
+3618:                   {printDoc.type !== 'DeliveryNote' && (
+3619:                     <>
+3620:                       <td className="py-3 px-3 font-mono text-right text-xs">{formatPrintCurrency(item.rate, printDoc)}</td>
+3621:                       <td className="py-3 px-3 font-mono text-right text-indigo-600 text-xs">{formatPrintCurrency(item.vatAmount, printDoc)}</td>
+3622:                       <td className="py-3 px-3 font-mono font-semibold text-right text-slate-900 text-xs">{formatPrintCurrency(item.total, printDoc)}</td>
+3623:                     </>
+3624:                   )}
+3625:                 </tr>
+3626:               ))}
+3627:             </tbody>
+3628:           </table>
+3629: 
+3630:           {/* Ledger Summary / Packing Slip / Delivery Note Handover section */}
+3631:           {printDoc.type === 'DeliveryNote' ? (
+3632:             <div className="pt-4 border-t border-slate-200 mt-4 space-y-4">
+3633:               <div className="flex justify-between items-center bg-slate-50 p-3 rounded-lg border border-slate-200 text-xs font-mono">
+3634:                 <div className="space-x-4">
+3635:                   <span>Total Items: <strong className="text-slate-900">{printDoc.items.length}</strong></span>
+3636:                   <span>Total Quantity: <strong className="text-slate-900">{printDoc.items.reduce((s, i) => s + (Number(i.qty) || 0), 0)} Units</strong></span>
+3637:                 </div>
+3638:                 <div className="text-slate-500 text-[10px] italic">
+3639:                   Non-Financial Dispatch Document
+3640:                 </div>
+3641:               </div>
+3642: 
+3643:               <div className="bg-slate-50 p-3 rounded-lg border border-slate-200">
+3644:                 <h4 className="font-bold text-slate-700 text-xs font-mono uppercase tracking-wider mb-1">Dispatch & Handover Confirmation</h4>
+3645:                 <p className="text-[10px] text-slate-500 italic">Received the above goods in clean, undamaged condition and exact physical count.</p>
+3646:                 {printDoc.notes && (
+3647:                   <p className="text-[11px] text-slate-700 mt-1 font-mono"><strong>Notes:</strong> {printDoc.notes}</p>
+3648:                 )}
+3649:                 <div className="h-8 border border-slate-300 border-dashed rounded mt-1.5 bg-white"></div>
+3650:               </div>
+3651: 
+3652:               <div className="grid grid-cols-4 gap-3 pt-2 text-center">
+3653:                 <div className="space-y-3">
+3654:                   <div className="h-8 border-b border-slate-300 border-dashed flex items-end justify-center text-xs text-slate-600 pb-0.5">
+3655:                     {printDoc.preparedBy || 'Storekeeper'}
+3656:                   </div>
+3657:                   <p className="text-[9px] font-mono font-bold text-slate-500 uppercase tracking-wider">Packed By</p>
+3658:                 </div>
+3659:                 <div className="space-y-3">
+3660:                   <div className="h-8 border-b border-slate-300 border-dashed flex items-end justify-center text-xs text-slate-600 pb-0.5"></div>
+3661:                   <p className="text-[9px] font-mono font-bold text-slate-500 uppercase tracking-wider">Checked By</p>
+3662:                 </div>
+3663:                 <div className="space-y-3">
+3664:                   <div className="h-8 border-b border-slate-300 border-dashed flex items-end justify-center text-xs text-slate-600 pb-0.5"></div>
+3665:                   <p className="text-[9px] font-mono font-bold text-slate-500 uppercase tracking-wider">Delivered By / Driver</p>
+3666:                 </div>
+3667:                 <div className="space-y-3">
+3668:                   <div className="h-8 border-b border-slate-300 border-dashed flex items-end justify-center text-xs text-slate-600 pb-0.5"></div>
+3669:                   <p className="text-[9px] font-mono font-bold text-slate-500 uppercase tracking-wider">Receiver Signature & Stamp</p>
+3670:                 </div>
+3671:               </div>
+3672:             </div>
+3673:           ) : isPackingSlip ? (
+3674:             <div className="pt-4 border-t border-slate-200 mt-4 space-y-4">
+3675:               {/* Delivery Note Totals Summary */}
+3676:               <div className="flex justify-end">
+3677:                 <div className="w-72 bg-slate-50 p-3 rounded-lg border border-slate-200 text-xs space-y-1.5 font-mono">
+3678:                   <div className="flex justify-between text-slate-600">
+3679:                     <span>Subtotal:</span>
+3680:                     <span className="font-semibold text-slate-900">{formatPrintCurrency(printDoc.subtotal, printDoc)}</span>
+3681:                   </div>
+3682:                   <div className="flex justify-between text-indigo-600">
+3683:                     <span>VAT (5%):</span>
+3684:                     <span className="font-semibold">{formatPrintCurrency(printDoc.vatTotal, printDoc)}</span>
+3685:                   </div>
+3686:                   <div className="flex justify-between border-t border-slate-200 pt-1.5 font-bold text-slate-900 text-sm">
+3687:                     <span>Total Amount:</span>
+3688:                     <span>{formatPrintCurrency(printDoc.total, printDoc)}</span>
+3689:                   </div>
+3690:                 </div>
+3691:               </div>
+3692: 
+3693:               <div className="bg-slate-50 p-3 rounded-lg border border-slate-200">
+3694:                 <h4 className="font-bold text-slate-700 text-xs font-mono uppercase tracking-wider mb-1">Packing & Delivery Remarks</h4>
+3695:                 <p className="text-[10px] text-slate-500 italic">Please inspect all item quantities, unit rates, and packaging seals before receiving. Any discrepancy should be recorded below.</p>
+3696:                 <div className="h-10 border border-slate-300 border-dashed rounded mt-1.5 bg-white"></div>
+3697:               </div>
+3698:               <div className="grid grid-cols-4 gap-3 pt-2 text-center">
+3699:                 <div className="space-y-3">
+3700:                   <div className="h-8 border-b border-slate-300 border-dashed flex items-end justify-center text-xs text-slate-600 pb-0.5">
+3701:                     {printDoc.preparedBy || 'Storekeeper'}
+3702:                   </div>
+3703:                   <p className="text-[9px] font-mono font-bold text-slate-500 uppercase tracking-wider">Packed By</p>
+3704:                 </div>
+3705:                 <div className="space-y-3">
+3706:                   <div className="h-8 border-b border-slate-300 border-dashed flex items-end justify-center text-xs text-slate-600 pb-0.5"></div>
+3707:                   <p className="text-[9px] font-mono font-bold text-slate-500 uppercase tracking-wider">Checked By</p>
+3708:                 </div>
+3709:                 <div className="space-y-3">
+3710:                   <div className="h-8 border-b border-slate-300 border-dashed flex items-end justify-center text-xs text-slate-600 pb-0.5"></div>
+3711:                   <p className="text-[9px] font-mono font-bold text-slate-500 uppercase tracking-wider">Delivered By</p>
+3712:                 </div>
+3713:                 <div className="space-y-3">
+3714:                   <div className="h-8 border-b border-slate-300 border-dashed flex items-end justify-center text-xs text-slate-600 pb-0.5"></div>
+3715:                   <p className="text-[9px] font-mono font-bold text-slate-500 uppercase tracking-wider">Receiver Signature & Stamp</p>
+3716:                 </div>
+3717:               </div>
+3718:             </div>
+3719:           ) : (
+3720:             <div className="flex justify-between items-start pt-4 border-t border-slate-100 gap-6">
+3721:               {/* Left: Bank details & signatures */}
+3722:               <div className="w-1/2 space-y-4">
+3723:                 {/* Custom Text Field Box if enabled and has value */}
+3724:                 {((printDoc.showCustomTextOnInvoice ?? printDoc.customTextFieldEnabled) || (company.showCustomTextOnInvoice && company.customTextFieldEnabled)) && (printDoc.customTextFieldValue || company.customTextFieldValue) && (
+3725:                   <div className="bg-[#F8FAFC] p-2.5 rounded-lg border border-[#E2E8F0] space-y-0.5">
+3726:                     <span className="font-extrabold text-slate-700 text-[9px] uppercase font-mono tracking-wider block">
+3727:                       {printDoc.customTextFieldName || company.customTextFieldName || 'Custom Info / Reference'}
+3728:                     </span>
+3729:                     <p className="text-[10px] text-slate-800 font-medium">
+3730:                       {printDoc.customTextFieldValue || company.customTextFieldValue}
+3731:                     </p>
+3732:                   </div>
+3733:                 )}
+3734: 
+3735:                 <div className="bg-[#F8FAFC] p-3 rounded-lg border border-[#E2E8F0] space-y-1">
+3736:                   <h4 className="font-bold text-slate-700 text-[10px] uppercase font-mono tracking-widest">Corporate Wire Bank Details</h4>
+3737:                   <p className="text-[10px] text-slate-600">Please settle the invoice amount to the bank ledger below:</p>
+3738:                   <div className="font-mono text-[10px] space-y-0.5 pt-1">
+3739:                     <p>Bank Name: <strong>{company.bankName || printDoc.bankName || 'Emirates NBD'}</strong></p>
+3740:                     <p>Account Name: {company.bankAccountName || printDoc.bankAccountName || company.name}</p>
+3741:                     <p>IBAN: <strong className="text-slate-900">{company.bankIban || printDoc.bankIban}</strong></p>
+3742:                     {(company.bankCustomerName || printDoc.bankCustomerName) && <p>Customer Name: {company.bankCustomerName || printDoc.bankCustomerName}</p>}
+3743:                     {(company.bankCity || printDoc.bankCity) && <p>City: {company.bankCity || printDoc.bankCity}</p>}
+3744:                     {(company.bankDetail || printDoc.bankDetail) && <p>Bank Details / SWIFT: {company.bankDetail || printDoc.bankDetail}</p>}
+3745:                   </div>
+3746:                   <div className="mt-2 text-left border-t border-slate-200 pt-2 text-[10px] font-sans">
+3747:                     <p className="font-extrabold text-slate-600">Total in Words:</p>
+3748:                     <p className="text-slate-800 font-bold mt-0.5">{convertAmountToBilingualWords(printDoc.total).english}</p>
+3749:                   </div>
+3750:                 </div>
